@@ -25,7 +25,17 @@ jobs:
 
       - name: Check linters
         run: |
-          pre-commit run -a
+          pre-commit run -a check-yaml
+          pre-commit run -a check-toml
+          pre-commit run -a check-json
+          pre-commit run -a end-of-file-fixer
+          pre-commit run -a trailing-whitespace
+          pre-commit run -a check-merge-conflict
+          pre-commit run -a detect-private-key
+          pre-commit run -a check-added-large-files
+          pre-commit run -a ruff
+          pre-commit run -a ruff-format
+          pre-commit run -a mypy
 
       - name: Mypy
         run: |
